@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.zoomies.api.model.User;
 import com.zoomies.api.model.dto.LoginDto;
 import com.zoomies.api.model.dto.RegisterDto;
-import com.zoomies.api.service.AuthService;
+import com.zoomies.api.service.impl.AuthService;
+import com.zoomies.api.util.ResponseUtil;
 
 @RequestMapping("/auth")
 public class AuthController {
@@ -18,22 +19,14 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<User> login(@Validated @RequestBody LoginDto loginDto) {
-        try {
-            User user = authService.login(loginDto);
-            return ResponseEntity.ok(user);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+        User user = authService.login(loginDto);
+        return ResponseUtil.success(user);
     }
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@Validated @RequestBody RegisterDto registerDto) {
-        try {
-            User user = authService.register(registerDto);
-            return ResponseEntity.ok(user);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+        User user = authService.register(registerDto);
+        return ResponseUtil.success(user);
     }
 
 }

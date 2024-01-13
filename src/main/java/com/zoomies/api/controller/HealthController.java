@@ -4,12 +4,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zoomies.api.util.ResponseUtil;
+
 @RequestMapping("/health")
 public class HealthController {
 
     @GetMapping("/alive")
     public ResponseEntity<String> alive() {
-        return ResponseEntity.ok("OK");
+        return ResponseUtil.success("I'm alive!");
     }
 
 }

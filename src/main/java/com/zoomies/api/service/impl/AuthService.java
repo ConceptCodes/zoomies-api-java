@@ -1,4 +1,6 @@
-package com.zoomies.api.service;
+package com.zoomies.api.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.zoomies.api.exceptions.BadRequestException;
 import com.zoomies.api.exceptions.InternalException;
@@ -11,6 +13,7 @@ import com.zoomies.api.repository.UserRepository;
 
 public class AuthService {
 
+    @Autowired
     private UserRepository userRepository;
 
     public User login(LoginDto loginDto) throws NotFoundException, UnauthorizedException, InternalException {
